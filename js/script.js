@@ -27,8 +27,6 @@ console.log(slideContImg);
 
 for(let i = 0; i < images.length; i++) {
     
-    
-
     const slideDiv = `
         <div class="image">
             <img src="${images[i].image}" alt="">
@@ -37,6 +35,7 @@ for(let i = 0; i < images.length; i++) {
         </div>`;
     console.log(slideDiv);
     slideContImg.innerHTML += slideDiv;
+
 }
 
 // ora devo prendere la prima immagine in active
@@ -62,15 +61,20 @@ btnDown.addEventListener("click", function() {
     allImages[activeImage].classList.add("active");
 
     if (activeImage === allImages.length - 1) {
-        btnDown.classList.add("hidden");
+            // rimuovo active 
+        allImages[activeImage].classList.remove("active");
+
+    // do un incremento alla prima immagine 
+        activeImage = 0;
+
+    // aggiungo active alla successiva
+        allImages[activeImage].classList.add("active");
     }
     
 });
 
 // click bottone indietro
-btnUp.classList.add("hidden");
 btnUp.addEventListener("click", function() {
-btnDown.classList.remove("hidden");
     // rimuovo active
     allImages[activeImage].classList.remove("active");
 
@@ -80,8 +84,16 @@ btnDown.classList.remove("hidden");
     // aggiungo active alla nuova immagine 
     allImages[activeImage].classList.add("active");
 
-    if (activeImage === 0) {
-        btnUp.classList.add("hidden");
+    if (activeImage = 0) {
+    // rimuovo active
+    allImages[activeImage].classList.remove("active");
+
+    // decremento l'immagine 
+    activeImage == (allImages.length - 1) ;
+
+    // aggiungo active alla nuova immagine 
+    allImages[activeImage].classList.add("active");
+
     }
 })
 
